@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<![endif]-->
+<title>A Simple Page with CKEditor</title>
+<!-- Make sure the path to CKEditor is correct. -->
+<link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">  
+<link href="css/stylesrc.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.min.js?=1.03"></script>  
+<script src="js/vendor/jquery.ui.widget.js"></script>
+<script src="js/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="js/jquery.fileupload.js"></script>
+<script type="text/javascript" src="js/jQuerydate_input/jquery.date_input.js"></script>
+<link rel="stylesheet" href="js/jQuerydate_input/date_input.css" type="text/css">
+<script type="text/javascript">$($.dfinput3.initialize);</script>
+<style type="text/css">
+/* 进度条样式 */
+.up_progress{width: 300px;height: 13px;font-size: 10px;line-height: 14px;overflow: hidden;background: #e6e6e6;margin: 5px 0;display:none;}
+.up_progress .progress-bar{height: 13px;background: #11ae6f;float: left;color: #fff;text-align: center;width:0%;}
+</style>
+<script language="javascript">
+<!--
+function checkForm(frm)
+{
+	if ( frm.itemName.value.length < 6 )
+	{
+		alert('请输入有效的检查项目名称');
+		frm.itemName.focus();
+		return false;
+	}
+	if ( frm.endTime.value == "" )
+	{
+		alert('请填写整改完成时间！');
+		frm.endTime.focus();
+		return false;
+	}
+
+	if ( frm.srcFilePath.value == "" )
+	{
+		alert('请上传检查源件！');
+		return false;
+	}
+	if ( frm.responsiblePeople.value.length < 2 )
+	{
+		alert('请输入有效的责任人！');
+		frm.responsiblePeople.focus();
+		return false;
+	}
+	if ( frm.departmentPeople.value.length < 2 )
+	{
+		alert('请输入有效的部门负责人！');
+		frm.departmentPeople.focus();
+		return false;
+	}
+	if ( frm.editor11.value == '' )
+	{
+		alert('请填写发现的问题！');
+		frm.editor11.focus();
+		return false;
+	}
+	if ( frm.statusFlag.value == '0' && frm.editor33.value == '' )
+	{
+		alert('请填写未整改原因!');
+		frm.editor33.focus();
+		return false;
+	}
+	if ( frm.statusFlag.value == '1' && frm.editor22.value == '' )
+	{
+		alert('请填写整改情况');
+		frm.editor22.focus();
+		return false;
+	}
+	if ( frm.userID1.value == '' )
+	{
+		alert('分管领导不能为空，请确认您所在的科室已经分配分管领导！');
+		return false;
+	}
+	if ( frm.userID2.value == '' )
+	{
+		alert('请选择审核科室！');
+		return false;
+	}
+	return true
+}
+function changeUserID2(obj)
+{
+	obj.form.userID2.value  =  obj.value;
+}
+function radioClick(val)
+{
+	title1='整&nbsp;&nbsp;改&nbsp;&nbsp;情&nbsp;&nbsp;况';
+	title2='未&nbsp;整&nbsp;改&nbsp;原&nbsp;因';
+	if ( val == 1 )
+	{
+		document.getElementById('lab1').innerHTML=title1;
+		document.getElementById('editor22').style="display:block";
+		document.getElementById('editor33').style="display:none";
+	}
+	else
+	{
+		document.getElementById('lab1').innerHTML=title2;
+		document.getElementById('editor22').style="display:none";
+		document.getElementById('editor33').style="display:block";
+	}
+}
+//-->
+</script>
+</head>
+<body>
+<div class="place">
+<span>位置：</span>
+<ul class="placeul">
+<li><a href="#">台帐管理</a></li>
+<li><a href="#">我的台帐</a></li>
+<li><a href="#">新建台帐</a></li>
+</ul>
+</div>
+<ul class="forminfo">
+<div id="form"   class="formbody" style="display:__FORMSTYLE__;">
+<form method="post" class="formobj" id="formobj" action="?opt=addFlagSave&departmentID=__DEPARTMENTID__" onsubmit="return checkForm(this);">
+    <li><label>检查项目名称</label><input type="text" maxlength="120" name="itemName" id="itemName" class="dfinput2" value="">
+    <input type="hidden" name="bankID" value="__BANKID__">
+    <input type="hidden" name="departmentID" value="__DEPARTMENTID__">
+    <input type="hidden" name="userID2" value="__USERID2__">
+    <input type="hidden" name="userID1" value="__USERID1__">
+    <input type="hidden" name="bankFlag" value="__BANKFLAG__">
+    </li>
+    <span><label>整&nbsp;&nbsp;改&nbsp;&nbsp;时&nbsp;&nbsp;限&nbsp;&nbsp;</label>
+    <input type="text" name="endTime" class="dfinput3">&nbsp;&nbsp;&nbsp;&nbsp;
+    <label>责任人&nbsp;&nbsp;</label><input type="text" maxlength="20" name="responsiblePeople" class="dfinput1" id="responsiblePeople">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label>部门负责人&nbsp;&nbsp;</label><input type="text" maxlength="20" name="departmentPeople" class="dfinput1" id="departmentPeople">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label>上传源文件&nbsp;&nbsp;</label>
+	<input type="button" class="ui-upload" onclick="document.getElementById('fileupload').click()" value="上传文件"/>
+	<input id="fileupload" type="file" name="file" data-url="/api/uploadJquery.php" style="display:none">
+	<!-- 图片上传进度条模块 -->
+	<div class="up_progress">
+	    <div class="progress-bar"></div>
+	</div>
+	<div style="display:__DOWNLOADSTYLE__;clear:both;" id="downloadpane" ><a id="download" href="/api/download.php?fileID=__FILEID__&filePath=__SRCFILEPATH__" download="检查原件"><font color="red">检查原件</font></a></div>
+    <br>
+    </span>
+    <br>
+    <dd style="__BANK1STYLE__"><label>责&nbsp;&nbsp;任&nbsp;&nbsp;科&nbsp;&nbsp;室&nbsp;&nbsp;&nbsp;</label>__DEPARTMENTNAME__<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分管领导&nbsp;&nbsp;</label>__CHECKUSER1__&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<label>审&nbsp;核&nbsp;科&nbsp;室&nbsp;&nbsp;</label>__CHECKUSER2__&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>录&nbsp;入&nbsp;帐&nbsp;号&nbsp;</label>__UID__<br><br>
+	</dd>
+	<dd style="__BANK0STYLE__">
+	<label>责&nbsp;&nbsp;任&nbsp;&nbsp;科&nbsp;&nbsp;室&nbsp;&nbsp;&nbsp;</label>__DEPARTMENTNAME__<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分管领导&nbsp;&nbsp;</label>__CHECKUSER2__&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<label>审&nbsp;核&nbsp;帐&nbsp;号&nbsp;&nbsp;</label>__CHECKUSER1__&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>录&nbsp;入&nbsp;帐&nbsp;号&nbsp;</label>__UID__<br><br>
+	</dd>
+    <label>发&nbsp;现&nbsp;的&nbsp;问&nbsp;题</label><br><br><textarea class="textarea2" name="editor11" id="editor11" rows="20" cols="120">请填写发现的问题</textarea><br><br>
+    <div>
+    <span><label>是&nbsp;&nbsp;否&nbsp;&nbsp;整&nbsp;&nbsp;改&nbsp;&nbsp;</label><input type="radio" name="statusFlag" value="1" checked onclick="javascript:radioClick('1');">&nbsp;整改&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="statusFlag" value="0"  onclick="javascript:radioClick('0');">&nbsp;不整改<br>
+    <label id="lab1">整&nbsp;&nbsp;改&nbsp;&nbsp;情&nbsp;&nbsp;况</label><br>
+    <textarea name="editor22" class="textarea1"  id="editor22" rows="20" cols="120" style="display:block">请填写整改的问题</textarea>
+    <textarea name="editor33" class="textarea1"  id="editor33" rows="20" cols="120" style="display:none">请填写不能整改的原因</textarea>
+    </div>
+    <input type="hidden" name="srcFilePath" id="srcFilePath" value="__SRCFILEPATH__">
+
+	<script type="text/javascript">
+    //图片上传
+    $("#fileupload").fileupload({
+        dataType: 'json',
+        add: function (e, data) {
+            $('.up_progress .progress-bar').css('width','0px');
+            $('.up_progress').show();
+            $('.up_progress .progress-bar').html('Uploading...');
+            data.submit();
+        },
+        done: function (e, data1) {
+            $('.up_progress').hide();
+            $('.upl').remove();
+            var d = data1.result;
+            if(d.retCode==0){
+                alert(d.msg);
+            }else
+            {
+            	var data=d;
+            	$("#downloadpane").attr("style","display:null");
+				$("#srcFilePath").val(data.filePath);
+				$("#srcFileName").val(data.srcFileName);
+				//$("#flowChartName").val(data.srcFileName);
+				//editor.setData(data.srcFileName);
+				$("#download").attr("href","/api/download.php?downloadType=tmp&filePath="+data.filePath);
+		    	$("#download").attr("download",data.srcFileName);
+		    	$("#download").html(data.srcFileName);
+
+		    	if ( data.filePath.substr(data.filePath.lastIndexOf(".")) == '.docx'
+		    		||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.doc'
+		    		||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.gd'
+		    		||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.wps'
+		    		||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.GW'
+		    		||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.xls'
+		    		||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.xlsx'
+		    		||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.et'
+		    		||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.dps'   )					    
+		    	{
+
+				    if ( data.filePath.substr(data.filePath.lastIndexOf(".")) != '.gd'||data.filePath.substr(data.filePath.lastIndexOf(".")) != '.GW'	)
+		    			editor.setData(data.srcFileName);    //对editor赋值
+		    		$("#srcFilePath").value=data.filePath;
+		    		$("#srcFileName").value=data.srcFileName;
+
+		    	}
+
+                if ( data.filePath.substr(data.filePath.lastIndexOf(".")) == '.jpeg'
+                        ||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.jpg'
+                        ||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.png'
+                        ||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.gif'
+                        )
+                {
+
+				    if ( data.filePath.substr(data.filePath.lastIndexOf(".")) != '.gd'||data.filePath.substr(data.filePath.lastIndexOf(".")) != '.GW'	)
+		    			editor.setData("<img src=\""+data.filePath+"\">");    //对editor赋值
+		    		$("#srcFilePath").value=data.filePath;
+		    		$("#srcFileName").value=data.srcFileName;
+                }
+            }
+        },
+        progressall: function (e, data) {
+            console.log(data);
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('.up_progress .progress-bar').css('width',progress + '%');
+        }
+    });
+    </script>
+    <br>
+    	<input type="submit" class="btn" value="保存"/><input type="submit" class="btn" value="送审"/>
+</form>
+</div>
+</ul>
+</body>
+</html>

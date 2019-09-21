@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="css/tabs.css"/>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/tabs.js"></script>
+</head>
+<body>
+    <div class='tabs' id="tabs">
+        <ul class='horizontal'>
+            <li rel="tab-1">information</li>
+            <li rel="tab-2" relHref="T1.html" class="selectActive">tab2</li>
+            <li rel="tab-3" relHref="T2.html">tab3</li>
+        </ul>
+        <div rel='tab-1'><span>Change the tab to see that there is an animation.</span></div>
+        <div rel='tab-2'><span>Tab 2</span></div>
+        <div rel='tab-3'><span>Tab 3</span></div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    tabs_takes.init("tabs");
+</script>

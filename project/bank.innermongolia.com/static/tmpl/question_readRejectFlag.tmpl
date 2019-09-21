@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<![endif]-->
+<title>A Simple Page with CKEditor</title>
+<!-- Make sure the path to CKEditor is correct. -->
+<link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">  
+<link href="css/stylesrc.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.min.js?=1.03"></script>  
+<script src="js/vendor/jquery.ui.widget.js"></script>
+</head>
+<body>
+<div class="place">
+<span>位置：</span>
+<ul class="placeul">
+<li><a href="#">台帐管理</a></li>
+<li><a href="#">我的台帐</a></li>
+<li><a href="#">查看台帐</a></li>
+</ul>
+</div>
+<ul class="forminfo">
+<div id="form" class="formbody" style="display:__FORMSTYLE__;">
+<form method="post" class="formobj" id="formobj" action="">
+    <li><label>检查项目名称</label><input type="text" maxlength="120" name="itemName" id="itemName" class="dfinput2" value="__ITEMNAME__" disabled></li>
+	<input type="hidden" name="msg" value="">
+	
+    <span><label>整&nbsp;&nbsp;改&nbsp;&nbsp;时&nbsp;&nbsp;限&nbsp;&nbsp;</label>
+    __ENDTIME__&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label>责任人&nbsp;&nbsp;</label><input type="text" maxlength="20" name="responsiblePeople" value="__RESONSIBLEPEOPLE__" class="dfinput1" id="responsiblePeople" disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label>部门负责人&nbsp;&nbsp;</label><input type="text" maxlength="20" name="departmentPeople" value="__DEPARTMENTPEOPLE__" class="dfinput1" id="departmentPeople" disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+	<label>源文件&nbsp;&nbsp;</label>
+	<div style="display:__DOWNLOADSTYLE__;clear:both;" id="downloadpane" ><a id="download" href="/api/download.php?fileID=__FILEID__&filePath=__SRCFILEPATH__" download="检查源文件"><font color="red">查看源文件</font></a></div>
+	<br>
+    <br>
+    <dd style="__BANK1STYLE__"><label>责&nbsp;&nbsp;任&nbsp;&nbsp;科&nbsp;&nbsp;室&nbsp;&nbsp;&nbsp;</label>__BANKNAME__->__DEPARTMENTNAME__<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分管领导&nbsp;&nbsp;</label>__CHECKUSER1__&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<label>审&nbsp;核&nbsp;科&nbsp;室&nbsp;&nbsp;</label>__CHECKUSER2__&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>录&nbsp;入&nbsp;帐&nbsp;号&nbsp;</label>__UID__<br><br>
+	</dd>
+	<dd style="__BANK0STYLE__">
+	<label>责&nbsp;&nbsp;任&nbsp;&nbsp;科&nbsp;&nbsp;室&nbsp;&nbsp;&nbsp;</label>__BANKNAME__->__DEPARTMENTNAME__<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分管领导&nbsp;&nbsp;</label>__CHECKUSER2__&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<label>审&nbsp;核&nbsp;帐&nbsp;号&nbsp;&nbsp;</label>__CHECKUSER1__&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>录&nbsp;入&nbsp;帐&nbsp;号&nbsp;</label>__UID__<br><br>
+	</dd>
+    <label>发&nbsp;现&nbsp;的&nbsp;问&nbsp;题</label><br><br><textarea class="textarea2" name="editor11" id="editor11" rows="20" cols="120" disabled>__QUESTIONDETAIL__</textarea><br>
+    <div>
+    <label>是&nbsp;&nbsp;否&nbsp;&nbsp;整&nbsp;&nbsp;改&nbsp;&nbsp;</label><input type="radio" name="statusFlag" value="1" __RADIO1CHECKED__ onclick="javascript:radioClick('1');" disabled>&nbsp;整改&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="statusFlag" value="0" __RADIO0CHECKED__  onclick="javascript:radioClick('0');" disabled>&nbsp;不整改<br>
+    <label id="lab1">__TITLE__</label><br>
+    <textarea name="editor22" class="textarea1"  id="editor22" rows="20" cols="120" style="__DISPLAY0__" disabled>__SITUATION__</textarea>
+    <textarea name="editor33" class="textarea1"  id="editor33" rows="20" cols="120" style="__DISPLAY1__" disabled>__REASON__</textarea>
+    </div>
+    <div class="btnbox">
+	__QUESTIONMSGLIST__
+    </div>
+    <br>
+    	<input type="button" class="btn" value="返 回" onclick="javascript:history.back();"/>
+
+</form>
+</div>
+</ul>
+</body>
+</html>

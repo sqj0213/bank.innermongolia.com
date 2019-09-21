@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<![endif]-->
+<title>无标题文档</title>
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+
+<link href="css/jquery-confirm-3.1.0.min.css" rel="stylesheet">
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap-3.2.0.min.js"></script>
+<script src="js/jquery-confirm-3.1.0.min.js"></script>
+<script>
+function delConfirm(urlLink)
+{
+$.confirm({
+      title: '系统提示',
+      content: '确认要删除吗？',
+      type:'red',
+      icon:'glyphicon glyphicon-question-sign',
+      buttons: {
+        ok: {
+            text: '确认',
+            //btnClass: 'btn-primary',
+            action: function(){
+				location.href=urlLink;
+
+            }
+        },
+        cancel: {
+            text: '取消',
+            //btnClass: 'btn-primary',
+            action: function(){
+                // button action.
+            }
+        },
+      }
+    });
+    }
+ </script>
+</head>
+
+<body>
+
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">岗位职责</a></li>
+    <li><a href="#">__DEPARTMENTNAME__</a></li>
+    </ul>
+    </div>
+    
+    <div class="formbody">
+    
+    <div class="formtitle"><span>__DEPARTMENTNAME__</span></div>
+	<div class="intropage">
+    __DEPARTMENTNOTE__
+    </div>
+    <div class="btnbox">
+        <br><a class="ibtn" href="/department.php?opt=editDepartmentFlag&departmentID=__DEPARTMENTID__&otherFlag=__OTHERFLAG__">编辑</a>
+    </div>
+    <!--mapdata-->
+    
+    <div class="formtitle"><span>__RESPONSIBILITYNAME__</span></div>
+    <div class="intropage">
+    <li>__RESPONSIBILITYNOTE__</li>
+    </div>
+     <div class="btnbox">
+        <a  class="ibtn" href="#" onclick="javascript:delConfirm('/department.php?opt=delFlag&departmentID=__DEPARTMENTID__&responsibilityID=__RESPONSIBILITYID__&otherFlag=__OTHERFLAG__');">删除</a><a class="ibtn" href="/department.php?opt=editResponsibilityFlag&departmentID=__DEPARTMENTID__&responsibilityID=__RESPONSIBILITYID__&otherFlag=__OTHERFLAG__">编辑</a>
+    </div>
+  <!--mapdata-->
+ 
+    </div>
+</body>
+</html>

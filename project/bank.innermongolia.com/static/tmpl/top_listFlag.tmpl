@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Untitled Document</title>
+    <link href="cssimg/login2.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<!--独立头部-->
+<div class="ab_top">
+	<div class="ab_uinfo">
+		<b>__USERNAME__</b> 您好！<span>上次登录时间：__LASTLOGINTIME__（IP：__IP__）</span>
+	</div>
+	<div class="ab_rmenu">
+						<a href="/kernel.php?module=mainFrame&app=logout" target=_parent>退出系统</a>
+						<a href="/kernel.php?module=updpassword&app=showtmpl&opt=editFlag" target="mainFrame" onclick="javascript:parent.document.getElementById('_middleFrame').cols='0,*';">修改密码</a>
+						<a href="/fileList.php?opt=listFlag" target="mainFrame" onclick="javascript:parent.document.getElementById('_middleFrame').cols='0,*'">检索</a>			
+						<a href="/appMenu.php?opt=listFlag"" target="leftFrame" onclick="javascript:parent.document.getElementById('_middleFrame').cols='370,*';parent.document.getElementById('mainFrame').src='/kernel.php?module=mainFrame&app=blank';">目录</a>
+	</div>
+</div>
+<!--头部结束-->
+
+</body>
+</html>

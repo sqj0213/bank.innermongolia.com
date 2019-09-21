@@ -1,0 +1,177 @@
+ 
+ <div align='center'>
+	<table  width='700' style='margin-top:0px;' >
+      <tr><td style='font-size:12px'>北京市住房资金管理中心</td></tr>
+		  <tr><td style='font-size:10px'>BEIJING HOUSING FUND MANAGEMENT CENTER</td></tr>
+		  <tr><td style='font-size:12px'></td></tr>
+		  <!--<tr><td style='font-size:12px'></td></tr>-->
+		  <tr height='20'><td align='center'><h2>住房公积金支取记录单</h2></td></tr>
+	</table>
+	<table  width='700' style=''>
+       <tr height='3' border=0>
+		       <td colspan='5' style='font-size:15px;font-weight:bold;'>工号：（12754）</td>
+		   </tr>
+		   <tr height='5' border=0>
+		       <td colspan='5' style='font-size:13px;padding-left:5px'>一、基本情况</td>
+		   </tr>
+    </table>
+    <table  width='700' style='margin-top:10px;border-collapse:collapse;' border=1>
+		   <tr height='3' >
+		     <td width='300' style='text-align:left;font-size:12px'>支取人姓名</td>
+			   <td width='50'  style='text-align:left;font-size:12px'  colspan='2' >身份证号</td>
+			   <td width='150' style='text-align:left;font-size:12px'>个人编号</td>
+			   <td width='350' style='text-align:left;font-size:12px'>单位名称</td>
+			   <td width='200' style='text-align:left;font-size:12px'> 单位登记号 </td>
+			   <td width='30' style='text-align:left;font-size:12px' colspan='2' > 是否有住房补贴 </td>
+		   </tr>
+		   <tr height='3' >
+		     <td style='text-align:left;font-size:12px'>孙全军&nbsp;</td>
+			   <td style='text-align:left;font-size:12px'  colspan='2' >150102197802132017&nbsp;</td>
+			   <td style='text-align:left;font-size:12px'> &nbsp;</td>
+			   <td style='text-align:left;font-size:12px'>新浪网</td>
+			   <td style='text-align:left;font-size:12px'>016912</td>
+			   <td style='text-align:left;font-size:12px' colspan='2'>&nbsp;</td>
+		   </tr>
+		   <tr height='3' >
+		     <td style='text-align:left;font-size:12px'>配偶姓名</td>
+			   <td style='text-align:left;font-size:12px'  colspan='2' >身份证号</td>
+			   <td style='text-align:left;font-size:12px'>个人编号</td>
+			   <td style='text-align:left;font-size:12px'>单位名称</td>
+			   <td style='text-align:left;font-size:12px'>单位登记号</td>
+			   <td style='text-align:left;font-size:12px' colspan='2'>是否有住房补贴</td>
+		   </tr>
+		   <tr height='3' >
+		     <td style='text-align:left;font-size:12px'>何雪冰&nbsp;</td>
+			   <td style='text-align:left;font-size:12px'  colspan='2' >152801198101113946&nbsp;</td>
+			   <td style='text-align:left;font-size:12px'>&nbsp;</td>
+			   <td style='text-align:left;font-size:12px'>&nbsp;</td>
+			   <td style='text-align:left;font-size:12px'>&nbsp;</td>
+			   <td style='text-align:left;font-size:12px' colspan='2'>&nbsp;</td>
+		   </tr>
+		   <tr height='3' >
+		     <td style='text-align:left;font-size:12px'>首套购房地址</td>
+		     <td style='text-align:left;font-size:12px' colspan='3' >呼和浩特市玉泉区锡林郭勒南路万锦融城8号楼2602号&nbsp;</td>  
+		     <td style='text-align:left;font-size:12px'>第二套购房地址</td>
+			   <td style='text-align:left;font-size:12px'></td>
+			   <td style='text-align:left;font-size:12px' colspan='2'></td>
+		   </tr>
+		   <tr height='3' >
+		     <td style='text-align:left;font-size:12px'>房价款(元)</td>
+		     <td style='text-align:left;font-size:12px' colspan='3' >914740&nbsp;</td>
+		     <td style='text-align:left;font-size:12px'>第二套房价款(元)</td>
+			   <td style='text-align:left;font-size:12px'></td>
+			   <td style='text-align:left;font-size:12px' colspan='2'></td>
+		   </tr>
+		   <tr height='3' >
+		     <td style='text-align:left;font-size:12px'>可累计提取公积金限额(元)</td>
+		     <td style='text-align:left;font-size:12px' width='70'>914740&nbsp; </td>
+		     <td style='text-align:center;font-size:12px;'width='200'>补贴提取限额</td>
+			   <td style='text-align:left;font-size:12px'></td>
+			   <td style='text-align:left;font-size:12px' >第二套累计提取公积金限额(元)</td>
+				   		 <td style='text-align:left;;font-size:12px '  width='100'> &nbsp;</td>
+						   <td style='text-align:center;;font-size:12px '  width='100'> 补贴提取限额 </td>
+						   <td style='text-align:left;;font-size:12px '  width='100'>&nbsp;</td>
+		
+
+		   </tr> 
+		    <tr height='3' >
+		     <td style='text-align:left;font-size:12px'>提取类型</td>
+		     <td style='text-align:left;font-size:12px'  colspan='3' >购房□ 租房□ 其它_________</td>
+			   <td style='text-align:left;font-size:12px'>提取银行及卡号</td>
+			   <td style='text-align:left;font-size:12px'>招商银行&nbsp;</td>
+			   <td style='text-align:left;font-size:12px' colspan='2'>6225880130240022&nbsp;</td>
+		   </tr>
+		   <tr height='3' >
+		   	 <td style='text-align:left;font-size:12px'>备注</td>
+			   <td colspan='7'></td>
+		   </tr>
+		   
+	</table>
+	<table  width='700' style='margin-top:7px' >
+	       <tr ><td colspan='6' style='font-size:13px;'>二、变更情况</td></tr>
+  </table>
+  <table  width='700' style='margin-top:7px;border-collapse:collapse;' border=1>     
+		   <tr height='2' >
+		     <td width='220' style='font-size:12px'>变更日期</td>
+			   <td width='220'style='font-size:12px'>变更事项</td>
+			   <td width='220'style='font-size:12px'>变更结果</td>
+         <td width='220'style='font-size:12px'>经办人签字</td>
+		   </tr>
+		   <tr height='2'>
+		     <td width='220'>&nbsp;</td>
+			   <td width='220'>&nbsp;</td>
+			   <td width='220'>&nbsp;</td>
+			   <td width='220'>&nbsp;</td>
+		   </tr>
+		   <tr height='2'>
+		     <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+		   </tr>
+	</table>
+	
+  <table  width='700' style='margin-top:7px' >
+	       <tr ><td colspan='6' style='font-size:13px;'>三、提取时间</td></tr>
+  </table>
+	<table  width='700' style='margin-top:10px;border-collapse:collapse;' border=1>
+		   <tr height='2' >
+		     <td width='220' style='font-size:12px'>提取日期</td>
+			   <td width='220'style='font-size:12px'>提取金额(元)</td>
+			   <td width='220'style='font-size:12px'>单位经办人签字</td>
+         <td width='220'style='font-size:12px'>操作人员签字</td>
+		   </tr>
+		   <tr height='2'>
+		     <td width='220'>&nbsp;</td>
+			   <td width='220'>&nbsp;</td>
+			   <td width='220'>&nbsp;</td>
+			   <td width='220'>&nbsp;</td>
+		   </tr>
+		   <tr height='2'>
+		     <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+		   </tr>
+		   <tr height='2'>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+		   </tr>
+		   <tr height='2'>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+		   </tr>
+		   <tr height='2'>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+		   </tr>
+		   <tr height='2'>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+		   </tr>
+		   <tr height='2'>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+		   </tr>
+		   <tr height='2'>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+			   <td width='200'>&nbsp;</td>
+		   </tr>
+		 
+		   
+	</table>
+	<table  width='700' style='margin-top:2px;border-collapse:collapse;'>
+<tr height='1px'><td colspan='6' style='text-align:right'>（分中心签章）</td></tr></table>
+</div>

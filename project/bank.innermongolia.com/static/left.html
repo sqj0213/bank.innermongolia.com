@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="js/jquery.js"></script>
+
+<script type="text/javascript">
+$(function(){	
+	//点击高亮
+	$(".tree03 li").click(function(){
+		$(".tree03 li.active").removeClass("active")
+		$(this).addClass("active");
+	});
+	//部门切换
+	$('.title').click(function(){
+		var $ul = $(this).next('ul');
+		$('dd').find('ul').slideUp();
+		if($ul.is(':visible')){
+			$(this).next('ul').slideUp();
+		}else{
+			$(this).next('ul').slideDown();
+		}
+	});
+	//一级切换
+	$('.tree01').click(function(){
+		var $ul = $(this).next('.treebox');
+		$('ul').find('.treebox').slideUp();
+		if($ul.is(':visible')){
+			$(this).next('.treebox').slideUp();
+		}else{
+			$(this).next('.treebox').slideDown();
+		}
+	});
+	//二级切换
+	$('.tree02').click(function(){
+		var $ul = $(this).next('ul');
+		$('ul').find('ul').slideUp();
+		if($ul.is(':visible')){
+			$(this).next('ul').slideUp();
+		}else{
+			$(this).next('ul').slideDown();
+		}
+	});
+	
+})	
+</script>
+
+
+</head>
+
+<body style="background:#f0f9fd;">
+	<div class="lefttop"><span></span>科室管理</div>
+    <dl class="leftmenu">   
+    <dd>
+    <div class="title">
+    <span><img src="images/leftico01.png" /></span>内审科</div>
+    	<ul class="menuson">
+        <li class="tree01"><a href="index.html" target="rightFrame">会记管理</a><i></i></li>
+        		<div class="treebox">
+        			<div class="tree02"><a href="#">总行</a></div>
+       	 		<ul class="tree03" style="display: none;">
+        				<li>2013年中国人名银行呼和浩特中心支行转发中国人民银行会计财务司关于会计财务报表分析的指导意见 （蒙银会计 【2013】33号）.pdf</li>
+        				<li>2015中国人名银行巴彦卓儿市中心支行会计人员强制休假、岗位轮换制度（巴银发[2015]44号）.doc</li>
+        				<li>文档名称一般比较长/标题自动换行/高亮显示当前选中文档（带格式、年份、编号等）.doc</li>
+       	 		</ul>
+       	 		<div class="tree02"><a href="#">呼和浩特中心支行</a></div>
+       	 		<ul class="tree03" style="display: none;">
+        				<li>文档名称一般比较长/标题自动换行/高亮显示当前选中文档（带格式、年份、编号等）.doc</li>
+      	  		</ul>
+        		</div>
+        <li class="tree01"><a href="right.html" target="rightFrame">财务管理</a><i></i></li>
+        		<div class="treebox" style="display: none;">
+       	 		<div class="tree02"><a href="#">二级分类</a></div>
+       	 		<ul class="tree03" style="display: none;">
+        				<li>文档名称一般比较长/标题自动换行/高亮显示当前选中文档（带格式、年份、编号等）.doc</li>
+      	  		</ul>
+       	 		<div class="tree02"><a href="#">二级分类</a></div>
+       	 		<ul class="tree03" style="display: none;">
+        				<li>文档名称一般比较长/标题自动换行/高亮显示当前选中文档（带格式、年份、编号等）.doc</li>
+      	  		</ul>
+        		</div>
+        <li class="tree01"><a href="imgtable.html" target="rightFrame">一级大类</a><i></i></li>
+        		<div class="treebox" style="display: none;">
+       	 		<div class="tree02"><a href="#">二级分类</a></div>
+       	 		<ul class="tree03" style="display: none;">
+        				<li>文档名称一般比较长/标题自动换行/高亮显示当前选中文档（带格式、年份、编号等）.doc</li>
+      	  		</ul>
+       	 		<div class="tree02"><a href="#">二级分类</a></div>
+       	 		<ul class="tree03" style="display: none;">
+        				<li>文档名称一般比较长/标题自动换行/高亮显示当前选中文档（带格式、年份、编号等）.doc</li>
+      	  		</ul>
+        		</div>
+        <li class="tree01"><a href="error.html" target="rightFrame">404页面</a><i></i></li>
+        </ul>    
+    </dd>
+    
+    <dd>
+    <div class="title"><span><img src="images/leftico01.png" /></span>财务科</div>
+    <ul class="menuson">
+        <li class="tree01"><a href="#">大类</a><i></i></li>
+        		<div class="treebox" style="display: none;">
+       	 		<div class="tree02"><a href="#">二级分类</a></div>
+       	 		<ul class="tree03" style="display: none;">
+        				<li>文档名称一般比较长/标题自动换行/高亮显示当前选中文档（带格式、年份、编号等）.doc</li>
+      	  		</ul>
+       	 		<div class="tree02"><a href="#">二级分类</a></div>
+       	 		<ul class="tree03" style="display: none;">
+        				<li>文档名称一般比较长/标题自动换行/高亮显示当前选中文档（带格式、年份、编号等）.doc</li>
+      	  		</ul>
+        		</div>
+        <li class="tree01"><a href="#">大类</a><i></i></li>
+        		<div class="treebox" style="display: none;">
+       	 		<div class="tree02"><a href="#">二级分类</a></div>
+       	 		<ul class="tree03" style="display: none;">
+        				<li>文档名称一般比较长/标题自动换行/高亮显示当前选中文档（带格式、年份、编号等）.doc</li>
+      	  		</ul>
+       	 		<div class="tree02"><a href="#">二级分类</a></div>
+       	 		<ul class="tree03" style="display: none;">
+        				<li>文档名称一般比较长/标题自动换行/高亮显示当前选中文档（带格式、年份、编号等）.doc</li>
+      	  		</ul>
+        		</div>
+        <li class="tree01"><a href="#">类目三</a><i></i></li>
+	</ul>     
+    </dd> 
+    
+    <dd>
+    	<div class="title"><span><img src="images/leftico01.png" /></span>科室三	</div>
+    <ul class="menuson">
+        <li class="tree01"><a href="#">一级大类</a><i></i></li>
+        		<div class="treebox" style="display: none;">
+       	 		<div class="tree02"><a href="#">二级分类</a></div>
+       	 		<ul class="tree03" style="display: none;">
+        				<li>文档名称一般比较长/标题自动换行/高亮显示当前选中文档（带格式、年份、编号等）.doc</li>
+      	  		</ul>
+       	 		<div class="tree02"><a href="#">二级分类</a></div>
+       	 		<ul class="tree03" style="display: none;">
+        				<li>文档名称一般比较长/标题自动换行/高亮显示当前选中文档（带格式、年份、编号等）.doc</li>
+      	  		</ul>
+        		</div>
+        <li class="tree01"><a href="#">一级大类</a><i></i></li>
+        		<div class="treebox" style="display: none;">
+       	 		<div class="tree02"><a href="#">二级分类</a></div>
+       	 		<ul class="tree03" style="display: none;">
+        				<li>文档名称一般比较长/标题自动换行/高亮显示当前选中文档（带格式、年份、编号等）.doc</li>
+      	  		</ul>
+       	 		<div class="tree02"><a href="#">二级分类</a></div>
+       	 		<ul class="tree03" style="display: none;">
+        				<li>文档名称一般比较长/标题自动换行/高亮显示当前选中文档（带格式、年份、编号等）.doc</li>
+      	  		</ul>
+        		</div>
+	</ul>   
+    </dd>
+    
+    <dd>
+    	<div class="title"><span><img src="images/leftico01.png" /></span>科室四</div>
+    </dd>   
+    
+    </dl>
+</body>
+</html>

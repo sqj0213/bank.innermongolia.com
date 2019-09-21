@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>中国人民银行会计财务制度电子手册-巴彦淖尔市中心支行</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<!--[if IE]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/stylesrc.css" type="text/css">     
+<link rel="stylesheet" type="text/css" href="/js/ySelect/css/font-awesome.4.6.0.css">
+<link href="js/ySelect/css/ySelect.css" rel="stylesheet" type="text/css">
+<script src="js/jquery.min.js"></script>
+<script src="js/ySelect/js/bootstrap.min.js"></script>
+<script src="js/ySelect/js/ySelect.js"></script>
+<script>
+$(document).ready(function(){
+$("l").each(function(){
+	if ( $(this ).text() == "" )
+		$(this).parents("tr").css("background-color","#F2F2F2");
+	else
+	{
+		if ( Number( $(this ).text() ) <= 0 )
+			$(this).parents("tr").css("background-color","#FFB6C1");
+		if ( Number( $(this ).text() ) >=20 )
+			$(this).parents("tr").css("background-color","#ffffff");
+		if ( Number( $(this ).text() ) >= 10 && Number( $(this ).text() ) <20 )
+			$(this).parents("tr").css("background-color","#FFF8DC");	
+	    if ( Number( $(this ).text() ) < 10 && Number( $(this ).text() ) > 0  )
+	    	$(this).parents("tr").css("background-color","#FFE4E1");
+	}
+});
+})
+
+
+
+$(function() {
+        $('.bankdepartment').ySelect();
+        $('.timeout').ySelect(
+          {
+            placeholder: '请选择整改剩余时限',
+            searchText: '搜索',
+            showSearch: false,
+            numDisplayed: 4,
+            overflowText: '已选中 {n}项',
+            isCheck:false
+          }
+        );
+        $('.statusFlag').ySelect(
+          {
+            placeholder: '请选择是否整改',
+            searchText: '搜索',
+            showSearch: false,
+            numDisplayed: 4,
+            overflowText: '已选中 {n}项',
+            isCheck:false
+          }
+        );
+        $('.checkStatus').ySelect(
+          {
+            placeholder: '请选择审核状态',
+            searchText: '搜索',
+            showSearch: false,
+            numDisplayed: 4,
+            overflowText: '已选中 {n}项',
+            isCheck:false
+          }
+        );
+      $("#current").click(function(){
+        $("#bankDepartment").attr("value",$("#m1").ySelectedValues(";"));
+        $("#timeout").attr("value",$("#m2").ySelectedValues(","));
+        $("#statusFlag").attr("value", $("#m3").ySelectedValues(","));
+        $("#checkStatus").attr("value",$("#m4").ySelectedValues(","));
+        //$("#checkStatus").attr("value",$("#m4").ySelectedTexts(","));
+        
+      });
+});
+
+
+</script>
+</head>
+<body>
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">台账检索</a></li>
+    </ul>
+    </div>
+        <div class="rightinfo">
+<ul class="toolbar">
+<form action="/questionList.php?opt=listFlag" method="post">
+<input type="hidden" id="bankDepartment" name="bankDepartment" value="__BANKDEPARTMENT__">
+<input type="hidden" id="timeout" name="timeout" value="__TIMEOUT__">
+<input type="hidden" id="statusFlag" name="statusFlag" value="__STATUSFLAG__">
+<input type="hidden" id="checkStatus" name="checkStatus" value="__CHECKSTATUS__">
+<select id='m1' class="bankdepartment" multiple="multiple" >
+__GROUPSELECTSTR__
+</select>
+<select id='m2' class="timeout" multiple="multiple">
+<option value="1">已超过整改时限</option>
+<option value="2">剩余10天时限</option>
+<option value="3">剩余20天时限</option>
+<option value="4">剩余20天以上时限</option>
+</optgroup>
+</select>
+<select id='m3' class="statusFlag" multiple="multiple">
+<option value="'1'">整改</option>
+<option value="'0'">不整改</option>
+</select>
+<select id='m4' class="checkStatus" multiple="multiple">
+<option value="1">草稿</option>
+<option value="2">待审核</option>
+<option value="3">待销号</option>
+<option value="4">已驳回</option>
+<option value="5">已销号</option>
+</select>
+问题关键字<input type="text" name="key1" class="dfinput3" value="__KEY1__">
+		<input type="submit" id="current" class="btn btn-primary" name="submit" value="检&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;索">
+		&nbsp;&nbsp;<input type="button" class="btn btn-primary" name="button" value="显示全部" onclick="javascript:location.href='/questionList.php?opt=listFlag';">
+
+		</form>
+		</ul>
+
+	<br>
+     <table class="tablelist">
+    	<thead>
+    	<tr>
+        <th>所属银行</th>
+        <th>责任部门</th>
+        <th>检查项目名称</th>
+        <th>发现的问题</th>
+        <th>整改时限</th>
+        <th>责任人</th>
+		<th>部门负责人</th>
+		<th>整改情况</th>
+		<th>检查源件</th>
+		<th>状态</th>
+		<th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+            <!--mapdata-->
+        <tr>
+        <td>__BANKNAME__</td>
+        <td>__DEPARTMENTNAME__</td>
+        <td>__ITEMNAME__</td>
+        <td>__QUESTIONDETAIL__</td>
+        <td>__ENDTIME__</td>
+        <td>__RESPONSIBLEPEOPLE__</td>
+		<td>__DEPARTMENTPEOPLE__</td>
+		<td style="cursor:pointer" title="__SITUATION__">...</td>
+		<td><a href="__SRCFILEPATH__" target="_blank">查看</a></td>
+		<td>__STATUS__</td>
+        <td><a href="/question.php?opt=readFlag&id=__ID__" class="tablelink">查看</a></td>
+        </tr> 
+          <!--mapdata-->
+        </tbody>
+
+    </table>
+    <br>
+	<div align="center">__BUTTOMSTR__</div>
+</div>
+<script language="javascript">
+
+var bankDepartment = '__BANKDEPARTMENT__';
+var timeout = '__TIMEOUT__';
+var statusFlag = "__STATUSFLAG__";
+var checkStatus = '__CHECKSTATUS__';
+
+var v1 = bankDepartment.split(";");
+for ( var i=0; i < v1.length; i++ )
+{
+	$("#m1").children().children("option[value=\""+v1[i]+"\"]").attr("selected",true);
+}
+var v1 = timeout.split(",");
+for ( var i=0; i < v1.length; i++ )
+{
+	$("#m2").children("option[value=\""+v1[i]+"\"]").attr("selected",true);
+}
+var v1 = statusFlag.split(",");
+for ( var i=0; i < v1.length; i++ )
+{
+	$("#m3").children("option[value=\""+v1[i]+"\"]").attr("selected",true);
+}
+var v1 = checkStatus.split(",");
+for ( var i=0; i < v1.length; i++ )
+{
+	$("#m4").children("option[value=\""+v1[i]+"\"]").attr("selected",true);
+}
+</script>
+</body>
+</html>

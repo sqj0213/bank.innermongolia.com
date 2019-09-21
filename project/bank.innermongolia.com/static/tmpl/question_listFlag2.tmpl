@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<![endif]-->
+<title>网站后台管理系统HTML模板--模板之家 www.cssmoban.com</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="jqueryCztab/css/base.css" rel="stylesheet" type="text/css">
+<link href="jqueryCztab/css/home.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script lauguage="javascript">
+$(document).ready(function(){
+$("l").each(function(){
+	if ( $(this ).text() == "" )
+		$(this).parents("tr").css("background-color","#F2F2F2");
+	else
+	{
+		if ( Number( $(this ).text() ) <= 0 )
+			$(this).parents("tr").css("background-color","#FFB6C1");
+		if ( Number( $(this ).text() ) >=20 )
+			$(this).parents("tr").css("background-color","#ffffff");
+		if ( Number( $(this ).text() ) >= 10 && Number( $(this ).text() ) <20 )
+			$(this).parents("tr").css("background-color","#FFF8DC");	
+	    if ( Number( $(this ).text() ) < 10 && Number( $(this ).text() ) > 0  )
+	    	$(this).parents("tr").css("background-color","#FFE4E1");
+	}
+});
+})
+</script>
+</head>
+<body>
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">台帐管理</a></li>
+    <li><a href="#">我的台帐</a></li>
+    <li><a href="#">待销号台帐</a></li>
+    </ul>
+    </div>
+    <table class="tablelist">
+    	<thead>
+    	<tr>
+        <th>检查项目名称</th>
+        <th>发现的问题</th>
+        <th>整改时限</th>
+		<th>所属银行</th>
+	    <th>责任部门</th>
+        <th>责任人</th>
+		<th>部门负责人</th>
+		<th>审核</th>
+		<th>整改情况</th>
+		<th>检查源件</th>
+		<th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+		<!--mapdata-->
+        <tr>
+        <td>__ITEMNAME__</td>
+        <td>__QUESTIONDETAIL__</td>
+        <td>__ENDTIME__</td>
+		<td>__BANKNAME__</td>
+        <td>__DEPARTMENTNAME__</td>
+        <td>__RESPONSIBLEPEOPLE__</td>
+		<td>__DEPARTMENTPEOPLE__</td>
+		<td>__CHECKUSER1__</td>
+		<td style="cursor:pointer" title="__SITUATION__">...</td>
+		<td><a href="__SRCFILEPATH__" target="_blank">查看</a></td>
+        <td><a href="/question.php?opt=readFlag&id=__ID__" class="tablelink">查看</a></td>
+        </tr> 
+          <!--mapdata-->
+       <tr><td colspan="11" align="center">__BUTTOMSTR__</td></tr>
+        </tbody>
+    </table>
+</body>
+</html>

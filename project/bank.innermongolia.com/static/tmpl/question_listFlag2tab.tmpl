@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<link type="text/css" rel="stylesheet" href="js/jQueryTab/css/tabs.css"/>
+<script src="http://www.jq22.com/jquery/jquery-1.9.1.js"></script>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="jqueryCztab/css/base.css" rel="stylesheet" type="text/css">
+<link href="jqueryCztab/css/home.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jQueryTab/js/tabs.js"></script>
+</head>
+<body>
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">台帐管理</a></li>
+    <li><a href="#">我的台帐</a></li>
+    <li><a href="#">待销号台帐</a></li>
+    
+    </ul>
+    </div>
+    <div class='tabs' id="tabs">
+        <ul class='horizontal'>
+            <li rel="tab-1" relHref="/question.php?opt=listFlag2&subFlag=center" __CENTERACTIVE__>巴市支行台帐</li>
+            <li rel="tab-2" relHref="/question.php?opt=listFlag2&subFlag=other" __OTHERACTIVE__>旗县支行台帐</li>
+        </ul>
+        <div rel='tab-1'><span>巴市支行台帐</span></div>
+        <div rel='tab-2'><span>旗县支行台帐</span></div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    tabs_takes.init("tabs");
+</script>
