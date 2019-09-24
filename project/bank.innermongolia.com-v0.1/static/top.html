@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>中国人民银行会计财务制度电子手册</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="css/login22.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="ab_top">
+	<div class="ab_uinfo">
+		<li class="tm_user"> 您好！<span id="time"></span></li>
+	</div>
+	<div class="ab_rmenu">
+		<ul>
+			<li class="tm_menu"><a href="/appMenu.php?opt=listFlag" target="leftFrame" onclick="javascript:parent.document.getElementById('_middleFrame').cols='370,*';parent.document.getElementById('mainFrame').src='/kernel.php?module=mainFrame&app=blank';">目录</a></li>
+			<li class="tm_sec"><a href="/fileList.php?opt=listFlag" target="mainFrame" onclick="javascript:parent.document.getElementById('_middleFrame').cols='0,*'">检索</a></li>
+			<li class="tm_pwd"><a href="/kernel.php?module=updpassword&app=showtmpl&opt=editFlag" target="mainFrame" onclick="javascript:parent.document.getElementById('_middleFrame').cols='0,*';">修改密码</a></li>
+			<li class="tm_logout"><a href="/kernel.php?module=mainFrame&app=logout" target=_parent>退出系统</a></li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	var pele = document.getElementById('time');
+//    获取当前时间
+function NowTime() {
+    var time=new Date();
+    var year=time.getFullYear();//获取年
+    var month=time.getMonth()+1;//或者月
+    var day=time.getDate();//或者天
+    var hour=time.getHours();//获取小时
+    var minu =time.getMinutes();//获取分钟
+    var second=time.getSeconds();//或者秒
+    var data=year+"-";
+    if(month<10){
+        data+="0";
+    }
+    data+=month+"-";
+    if(day<10){
+        data+="0"
+    }
+    data+=day+" ";
+    if(hour<10){
+        data+="0"
+    }
+    data+=hour+":";
+    if(minu<10){
+        data+="0"
+    }
+    data+=minu+":";
+    if(second<10){
+        data+="0"
+    }
+    data+=second;
+    return data;
+}
+function time() {
+
+    pele.innerHTML="当前时间："+NowTime();
+}
+setInterval(time,1000);
+</script>
+</body>
+</html>

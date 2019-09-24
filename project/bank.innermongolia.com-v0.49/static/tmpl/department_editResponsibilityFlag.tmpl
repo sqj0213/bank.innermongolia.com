@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<![endif]-->
+<title>无标题文档</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+</head>
+
+<body>
+
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">岗位职责</a></li>
+    <li><a href="#">__DEPARTMENTNAME__</a></li>
+    <li><a href="#">__RESPONSIBILITYNAME__</a></li>
+    </ul>
+    </div>
+    
+    <div class="formbody">
+    
+    <div class="formtitle"><span>基本信息</span></div>
+    <form name="form_1_webtask.cmd_1" action="/department.php?opt=editResponsibilityFlagSave&departmentID=__DEPARTMENTID__&responsibilityID=__RESPONSIBILITYID__" method="post" onsubmit="return script_juge(this);">  
+    <ul class="forminfo">
+    <li><label>岗位名称</label><input name="name_岗位名称_textarea_1_20_1_1" type="text" value="__RESPONSIBILITYNAME__" class="dfinput" /><i>岗位名称不能超过20个字符</i></li>
+     <li><label>岗位职责</label></li><li><textarea name="note_岗位职责_textarea_1_4096_1_1" cols="" rows="" class="textinput"> __RESPONSIBILITYNOTE__</textarea></li>
+    <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/>&nbsp;&nbsp;<input name="" type="button" onclick="javascript:history.back();" class="btn" value="返&nbsp;&nbsp;回"/></li>
+    </ul>
+    </form>
+    
+    </div>
+    
+    
+    <script>
+     CKEDITOR.replace( 'note_岗位职责_textarea_1_4096_1_1',
+
+     {
+                  toolbar :
+             [
+                ['Bold','Italic','JustifyLeft','JustifyCenter','JustifyRight','Link','Unlink'],
+                ['Image','Table','Format','FontSize','Maximize', 'ShowBlocks','Preview','Save','-']
+             ],
+      filebrowserBrowseUrl :  '/ckfinder/ckfinder.html',
+      filebrowserImageBrowseUrl :  '/ckfinder/ckfinder.html?Type=Images',
+      filebrowserFlashBrowseUrl :  '/ckfinder/ckfinder.html?Type=Flash',
+      filebrowserUploadUrl :  '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+      filebrowserImageUploadUrl  :  '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+      filebrowserFlashUploadUrl  :  '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+      }
+      );
+	</script>
+</body>
+</html>

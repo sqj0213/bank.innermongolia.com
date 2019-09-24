@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>用户表</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="/cssimg/style.css" type="text/css">
+    <link rel="stylesheet" href="cssimg/alertform.css" />
+	<script type="text/javascript" src="js/jquery.min.js"></script>  
+	<script type="text/javascript" src="js/jquery.XYTipsWindow.min.2.8.js"></script>
+	<script type="text/javascript" src="js/window.js"></script>
+   	<script type="text/javascript" src="js/pdfobject.min.js"></script> 		
+	<style>
+	.pdfobject-container { height: 500px;weight: 800x}
+	.pdfobject { border: 1px solid #666; }
+	</style>
+			    <script type="text/javascript">
+	    __PDFJS__
+	    </script>
+</head>
+<body>
+<div id="mainbox" style="display:__DOCSTYLE__">
+	<div id="userinfobox">
+		<div id="userinfoinbox"><table width="100%"><tr><td align="left"><a href="#" onclick="javascript:location.href='/fileList.php?opt=listFlag&key1=__KEY1__&key2=__KEY2__&key3=__KEY3__&searchType=__SEARCHTYPE__';">返回</a></td><td align="center">__TREEPATH__</td><td><li align="right"><a href="__SRCFILEPATH__" download="__SRCFILENAME__">下载</a></td></tr></table>
+__FILEBODY__
+</div></div></div>
+<div style="display:__PDFITEMSTYLE__;">
+<div align="center"><font size="5"><a href="#" onclick="javascript:location.href='/fileList.php?opt=listFlag&key1=__KEY1__&key2=__KEY2__&key3=__KEY3__&searchType=__SEARCHTYPE__';">返&nbsp;&nbsp;&nbsp;&nbsp;回</a></font></div>
+ <div class="panel panel-primary" id="pdfitem">
+ 
+ </div>
+ </div>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<![endif]-->
+<title>A Simple Page with CKEditor</title>
+<!-- Make sure the path to CKEditor is correct. -->
+<link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">  
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+
+<script type="text/javascript" src="js/jquery.min.js?=1.03"></script>  
+<script src="js/vendor/jquery.ui.widget.js"></script>
+ 
+<script src="js/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="js/jquery.fileupload.js"></script>
+<link href="css/jquery-confirm-3.1.0.min.css" rel="stylesheet">
+<script src="js/bootstrap-3.2.0.min.js"></script>
+<script src="js/jquery-confirm-3.1.0.min.js"></script>
+<script>
+function delConfirm(urlLink)
+{
+$.confirm({
+      title: '系统提示',
+      content: '确认要删除吗？',
+      type:'red',
+      icon:'glyphicon glyphicon-question-sign',
+      buttons: {
+        ok: {
+            text: '确认',
+            //btnClass: 'btn-primary',
+            action: function(){
+				location.href=urlLink;
+
+            }
+        },
+        cancel: {
+            text: '取消',
+            //btnClass: 'btn-primary',
+            action: function(){
+                // button action.
+            }
+        },
+      }
+    });
+    }
+ </script>
+</head>
+<body>
+    
+<div class="place">
+<span>位置：</span>
+<ul class="placeul">
+<li><a href="#">整改情况</a></li>
+<li><a href="#">__DEPARTMENTNAME__</a></li>
+<li><a href="#">修改整改情况</a></li>
+</ul>
+</div>
+<ul class="forminfo">
+<div id="form" class="formbody" style="display:__FORMSTYLE__;">
+<form method="post" id="formobj" action="?opt=editFlagSave&departmentID=__DEPARTMENTID__&fileID=__FILEID__" >
+    <label>整改情况名称：</label><input type="text" maxlength="20" name="flowChartName"  class="dfinput"  id="flowChartName" value="__SRCFILENAME__"><br><br>
+    <li>
+	<label>上传文件</label>
+
+	<input type="button" class="ui-upload" onclick="document.getElementById('fileupload').click()" value="上传文件"/>
+	<input id="fileupload" type="file" name="file" data-url="/api/uploadJquery.php" style="display:none">
+	<br>
+	<!-- 图片上传进度条模块 -->
+	<div class="up_progress">
+	    <div class="progress-bar"></div>
+	</div>
+	<div style="clear:both;"></div>
+
+    <label>整改情况：</label><br><br><br>
+    <textarea name="editor1" id="editor1" rows="20" cols="80">
+        __FILEBODY__
+    </textarea>
+    <input type="hidden" name="srcFilePath" id="srcFilePath" value="__SRCFILEPATH__">
+    <input type="hidden" name="srcFileName" id="srcFileName" value="__SRCFILENAME__">
+    <script>
+	    var editor= CKEDITOR.replace( 'editor1',
+	     {
+	          toolbar :
+	         [
+	            ['Bold','Italic','JustifyLeft','JustifyCenter','JustifyRight','Link','Unlink'],
+	            ['Image','Table','Format','FontSize','Maximize', 'ShowBlocks','Preview','Save','-']
+	         ],
+	      filebrowserBrowseUrl :  '/ckfinder/ckfinder.html',
+	      filebrowserImageBrowseUrl :  '/ckfinder/ckfinder.html?Type=Images',
+	      filebrowserFlashBrowseUrl :  '/ckfinder/ckfinder.html?Type=Flash',
+	      filebrowserUploadUrl :  '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+	      filebrowserImageUploadUrl  :  '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+	      filebrowserFlashUploadUrl  :  '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+	      }
+	      );
+    </script>
+        <script type="text/javascript">
+   
+    $("#fileupload").fileupload({
+        dataType: 'json',
+        add: function (e, data) {
+            $('.up_progress .progress-bar').css('width','0px');
+            $('.up_progress').show();
+            $('.up_progress .progress-bar').html('Uploading...');
+            data.submit();
+        },
+        done: function (e, data1) {
+            $('.up_progress').hide();
+            $('.upl').remove();
+            var d = data1.result;
+            if(d.retCode==0){
+                alert("上传失败");
+            }else
+            {
+            	var data=d;
+            	$("#downloadpane").attr("style","display:null");
+				$("#srcFilePath").val(data.filePath);
+				$("#srcFileName").val(data.srcFileName);
+				$("#flowChartName").val(data.srcFileName);
+				editor.setData(data.srcFileName);
+				$("#download").attr("href","/api/download.php?downloadType=tmp&filePath="+data.filePath);
+		    	$("#download").attr("download",data.srcFileName);
+		    	$("#download").html(data.srcFileName);
+
+		    	if ( data.filePath.substr(data.filePath.lastIndexOf(".")) == '.docx'
+		    		||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.doc'
+		    		||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.gd'
+		    		||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.wps'
+		    		||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.GW'
+		    		||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.xls'
+		    		||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.xlsx'
+		    		||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.et'
+		    		||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.dps'   )					    
+		    	{
+
+				    if ( data.filePath.substr(data.filePath.lastIndexOf(".")) != '.gd'||data.filePath.substr(data.filePath.lastIndexOf(".")) != '.GW'	)
+		    			editor.setData(data.srcFileName);    //对editor赋值
+		    		$("#srcFilePath").value=data.filePath;
+		    		$("#srcFileName").value=data.srcFileName;
+
+		    	}
+
+                if ( data.filePath.substr(data.filePath.lastIndexOf(".")) == '.jpeg'
+                        ||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.jpg'
+                        ||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.png'
+                        ||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.gif'
+                        )
+                {
+
+				    if ( data.filePath.substr(data.filePath.lastIndexOf(".")) != '.gd'||data.filePath.substr(data.filePath.lastIndexOf(".")) != '.GW'	)
+		    			editor.setData("<img src=\""+data.filePath+"\">");    //对editor赋值
+		    		$("#srcFilePath").value=data.filePath;
+		    		$("#srcFileName").value=data.srcFileName;
+                }
+            }
+        },
+        progressall: function (e, data) {
+            console.log(data);
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('.up_progress .progress-bar').css('width',progress + '%');
+        }
+    });
+    </script>
+    <style type="text/css">
+/* 进度条样式 */
+.up_progress{width: 300px;height: 13px;font-size: 10px;line-height: 14px;overflow: hidden;background: #e6e6e6;margin: 5px 0;display:none;}
+.up_progress .progress-bar{height: 13px;background: #11ae6f;float: left;color: #fff;text-align: center;width:0%;}
+</style>
+	<br>
+	<center>
+	<div style="display:__DOWNLOADSTYLE__;" ><a id="download" href="/api/download.php?fileID=__FILEID__&filePath=__SRCFILEPATH__" download="__SRCFILENAME__"><font color="red">__SRCFILENAME__</font></a>&nbsp;&nbsp;点击下载
+	</div>
+	</center>
+	<li>
+	<input type="submit" class="btn" value="保存"/>
+	<input type="button" class="btn" onclick="javascript:delConfirm('?opt=delFlag&departmentID=__DEPARTMENTID__&fileID=__FILEID__');" class="btn" value="删 除" />&nbsp;&nbsp;<input name="" type="button" onclick="javascript:history.back();" class="btn" value="返&nbsp;&nbsp;回"/>
+	</li>
+</form>
+
+</div>
+
+</ul>
+</body>
+</html>

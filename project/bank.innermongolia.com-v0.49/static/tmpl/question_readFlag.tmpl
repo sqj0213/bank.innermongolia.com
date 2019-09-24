@@ -1,0 +1,79 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<![endif]-->
+<title>用户表</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<style>
+table {
+ border: 1px solid #5F6F7E;
+ border-collapse: collapse;
+}
+table th {
+ border: 1px solid #5F6F7E;
+ background-color: #000000;
+ color: #000000;
+ text-align: left;
+ font-weight: normal;
+ padding: 2px 4px 2px 4px;
+ margin: 0;
+}
+table td {
+ margin: 0;
+ padding: 0;
+ border: 1px solid #000000;
+}
+</style>
+</head>
+<body>
+<div class="place">
+<span>位置：</span>
+<ul class="placeul">
+<li><a href="#">整改情况</a></li>
+<li><a href="#">__DEPARTMENTNAME__</a></li>
+<li><a href="#">__WORKFLOWNAME__</a></li>
+</ul>
+</div>
+
+<div class="formbody">
+__FILEBODY__
+<br><br>
+<div id="filebody">
+
+</div>
+</div>
+ <div  class="formbody">
+<input type="button" class="btn" onclick="javascript:location.href='?opt=editFlag&departmentID=__DEPARTMENTID__&fileID=__FILEID__';" name="button" value="编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;辑">
+ </div>
+</body>
+<script language="javascript">
+        function doexcel(url,obj) {
+        	var isIE=!!window.ActiveXObject;
+        	if (isIE)
+        	{
+        		try {
+            		var openDocObj = new ActiveXObject("SharePoint.OpenDocuments.3");
+            	}catch(e)
+            	{
+            		try{
+            			var openDocObj = new ActiveXObject("SharePoint.OpenDocuments.2");
+            		}catch(e){
+            			try{
+            		    	var openDocObj = new ActiveXObject("SharePoint.OpenDocuments.1");
+            		    }catch(e)
+            		    {
+							obj.innerHTML='该浏览器不支持在线打开，请下载<br><br>__SRCFILENAME__ &nbsp;&nbsp;&nbsp;<a id="download" href="/api/download.php?fileID=__FILEID__&filePath=__SRCFILEPATH__" download="__SRCFILENAME__"><font color="red">点击下载</font></a>';
+            		    	return false;
+            		    }
+            		}
+            	}
+            	openDocObj.ViewDocument(url);
+            }
+            else
+            	obj.innerHTML='该浏览器不支持在线打开，请下载<br><br>__SRCFILENAME__ &nbsp;&nbsp;&nbsp;<a id="download" href="/api/download.php?fileID=__FILEID__&filePath=__SRCFILEPATH__" download="__SRCFILENAME__"><font color="red">点击下载</font></a>';
+        }
+        doexcel('__FILEURL__',document.getElementById('filebody'));
+</script>
+</html>

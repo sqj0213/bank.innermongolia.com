@@ -1,0 +1,14 @@
+[GLOBAL]
+serverInfo.dbInfo.dbHost="localhost"
+serverInfo.dbInfo.dbName=webadmin
+serverInfo.dbInfo.dbUser=root
+serverInfo.dbInfo.dbPwd=123456
+serverInfo.dbInfo.dbPort=3306
+serverInfo.dbInfo.dbCharset=utf8
+serverInfo.logInfo.accLog=d:/logs/bank.innermongolia.com.acc-php.log
+serverInfo.logInfo.appLog=d:/logs/bank.innermongolia.com.app-php.log
+serverInfo.logInfo.errLog=d:/logs/bank.innermongolia.com.err-php.log
+serverInfo.logInfo.notLog=d:/logs/bank.innermongolia.com.not-php.log
+serverInfo.errorUrl=http://localhost:8080/login.php
+serverInfo.tmplPath=d:/wnmp/www/web-admin/project/bank.innermongolia.com/static/tmpl/
+uploadDir=d:/wnmp/www/web-admin/project/bank.innermongolia.com/static/ckfinder/userfiles/

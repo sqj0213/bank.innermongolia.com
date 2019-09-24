@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<![endif]-->
+<title>A Simple Page with CKEditor</title>
+<!-- Make sure the path to CKEditor is correct. -->
+<link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">  
+<link rel="stylesheet" href="css/style.css">  
+<style>
+.pdfobject-container { height: 800px;weight: 800px}
+.pdfobject { border: 1px solid #666; }
+</style>
+<link rel="stylesheet" href="cssimg/alertform.css" />
+<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="js/jquery.min.js?=1.03"></script>  
+<script type="text/javascript" src="js/pdfobject.min.js"></script>
+<script type="text/javascript" src="js/jquery.XYTipsWindow.min.2.8.js"></script>
+<script type="text/javascript" src="js/window.js"></script>
+<script src="js/vendor/jquery.ui.widget.js"></script>
+<script src="js/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="js/jquery.fileupload.js"></script>
+<script language="javascript">
+__PDFJS__
+</script>
+</head>
+<body>
+<div class="place">
+<span>位置：</span>
+<ul class="placeul">
+<li><a href="#">制度</a></li>__MENUPATH__
+</ul>
+</div>
+<ul class="forminfo">
+<div id="form" style="display:__FORMSTYLE__;">
+<form method="post" id="formobj"  class="formbody"  action="?opt=editFlagSave&menuID=__MENUID__" >
+    <li>
+    <label>上传原文件</label>
+    <input type="button" class="ui-upload" onclick="document.getElementById('fileupload').click()" value="上传文件"/>
+	<input id="fileupload" type="file" name="file" data-url="/api/uploadJquery.php" style="display:none">
+	<!-- 图片上传进度条模块 -->
+	<div class="up_progress">
+	    <div class="progress-bar"></div>
+	</div>
+	<div style="clear:both;"></div>
+	</li>
+    <textarea name="editor1" id="editor1" rows="10" cols="80">
+        __FILEBODY__
+    </textarea>
+    <input type="hidden" name="srcFilePath" id="srcFilePath" value="__SRCFILEPATH__">
+    <input type="hidden" name="srcFileName" id="srcFileName" value="__SRCFILENAME__">
+    <script>
+	     var editor=CKEDITOR.replace( 'editor1',
+	     {
+	             toolbar :
+	             [
+	                ['Bold','Italic','JustifyLeft','JustifyCenter','JustifyRight','Link','Unlink'],
+	                ['Image','Table','Format','FontSize','Maximize', 'ShowBlocks','Preview','Save','-']
+	             ],
+	      filebrowserBrowseUrl :  '/ckfinder/ckfinder.html',
+	      filebrowserImageBrowseUrl :  '/ckfinder/ckfinder.html?Type=Images',
+	      filebrowserFlashBrowseUrl :  '/ckfinder/ckfinder.html?Type=Flash',
+	      filebrowserUploadUrl :  '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+	      filebrowserImageUploadUrl  :  '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+	      filebrowserFlashUploadUrl  :  '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+	      }
+	      );
+    </script>
+        <script type="text/javascript">
+    //图片上传
+    $("#fileupload").fileupload({
+        dataType: 'json',
+        add: function (e, data) {
+            $('.up_progress .progress-bar').css('width','0px');
+            $('.up_progress').show();
+            $('.up_progress .progress-bar').html('Uploading...');
+            data.submit();
+        },
+        done: function (e, data1) {
+            $('.up_progress').hide();
+            $('.upl').remove();
+            var data = data1.result;
+            if(data.retCode==0)
+            {
+                alert(data.msg);
+            }
+            else
+            {
+            	$("#downloadpane").attr("style","display:null");
+				$("#srcFilePath").val(data.filePath);
+				$("#srcFileName").val(data.srcFileName);
+				editor.setData(data.srcFileName);
+				$("#download").attr("href","/api/download.php?downloadType=tmp&filePath="+data.filePath);
+		    	$("#download").attr("download",data.srcFileName);
+		    	$("#download").html(data.srcFileName);
+			    if ( data.filePath.substr(data.filePath.lastIndexOf(".")) == '.pdf' )
+			    { 
+			    	/*
+			    	var editor1 = CKEDITOR.instances["editor1"];
+			    	if (editor1) { 
+				            editor1.destroy(true);//销毁编辑器
+				    } 
+				    */  
+		    		$("#form").hide();
+		    		$("#pdfitem").show();
+					$("#pdfsave").show();
+		    		PDFObject.embed(data.filePath, "#pdfitem");
+
+		    	}
+
+		    	if ( data.filePath.substr(data.filePath.lastIndexOf(".")) == '.docx'||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.doc'||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.gd'||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.wps'||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.GW'||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.xls'||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.xlsx'||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.et'||data.filePath.substr(data.filePath.lastIndexOf(".")) == '.dps'   )
+			    { 
+			    	$("#pdfitem").hide();
+			    	$("#gditem").hide();
+			    	$("#pdfsave").hide();
+			    	$("#form").show();
+				    if ( data.filePath.substr(data.filePath.lastIndexOf(".")) != '.gd'||data.filePath.substr(data.filePath.lastIndexOf(".")) != '.GW'	)
+		    			editor.setData(data.msg);    //对editor赋值
+		    		$("#srcFilePath").value=data.filePath;
+		    		$("#srcFileName").value=data.srcFileName;
+		    	}
+            }
+        },
+        progressall: function (e, data) {
+            console.log(data);
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('.up_progress .progress-bar').css('width',progress + '%');
+        }
+    });
+    </script>
+<style type="text/css">
+/* 进度条样式 */
+.up_progress{width: 300px;height: 13px;font-size: 10px;line-height: 14px;overflow: hidden;background: #e6e6e6;margin: 5px 0;display:none;}
+.up_progress .progress-bar{height: 13px;background: #11ae6f;float: left;color: #fff;text-align: center;width:0%;}
+</style>
+    <br>
+    <input type="submit" class="btn" value="保存"/>
+</form>
+</div>
+<div>
+<center>
+ <div class="panel panel-primary" id="pdfitem" style="display:__PDFITEMSTYLE__;">
+ __PDFHTML__
+ </div>
+<div id="pdfsave" style="display:__PDFSAVESTYLE__" onclick='javascript:$("#formobj").submit();'><font size="5" class="btn" style="cursor:pointer">保&nbsp;&nbsp;&nbsp;存</font></div>
+<div style="display:__DOWNLOADSTYLE__;" id="downloadpane" ><a id="download" href="/api/download.php?fileID=__FILEID__&filePath=__SRCFILEPATH__" download="__SRCFILENAME__"><font color="red">__SRCFILENAME__</font></a>&nbsp;&nbsp;点击下载
+</div>
+</center>
+
+</div>
+</ul> 
+</body>
+</html>

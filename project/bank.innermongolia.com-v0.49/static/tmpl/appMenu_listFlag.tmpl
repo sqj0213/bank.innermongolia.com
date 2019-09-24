@@ -1,0 +1,88 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>中国人民银行会计财务制度电子手册-巴彦淖尔市中心支行</title>
+
+<link href="__CSSFILEPATH__" rel="stylesheet" type="text/css" />
+<!--<link rel="stylesheet" href="cssimg/ijquery.css" />-->
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="cssimg/alertform.css" />
+ <script type="text/javascript" src="js/menutree.js"></script>
+ <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+<script src="js/jquery.contextmenu.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="cssimg/jquery.contextmenu.css" />
+<style type="text/css">
+	.contextMenu {display:none}
+</style>
+__NOUSEFLAGBEGIN__
+<script type="text/javascript">
+	$(function() {
+		var pidList = [__NOMENUPIDLIST__];
+		var pidLevelList=[__NOUPDATEPIDLIST__];
+		var rootIDList=[__ROOTIDLIST__];
+
+		$('table td a').contextMenu('sysMenu',
+		{ 
+		    //重写onContextMenu和onShowMenu事件
+		   
+		    onContextMenu: function(e) {
+
+		    	$('#sysMenu').attr('val',$(e.target).attr('id'));
+				var menuID=parseInt($(e.target).attr('id'));
+		        if ( $.inArray(menuID, pidList ) != -1  ) return false;
+		        //else return true;
+		        return true;
+		    },
+			onShowMenu: function(e, menu) {	
+				var menuID=parseInt($(e.target).attr('id'));
+				if ( $.inArray( menuID, rootIDList ) != -1)
+				{
+					$('#updCMD, #delCMD', menu).remove();
+				}
+				//else if ( $.inArray(menuID, pidLevelList ) != -1  ) 
+				//{
+       			//	$('#updCMD, #delCMD', menu).remove();
+		        //}
+			    return menu;
+			},
+			bindings:{
+				'exitCMD': function(Item) {
+					return false;
+					
+				},
+				'addSUBCMD': function(Item) {
+					//parent.document.getElementById("mainFrame").XYTipsWindow.removeBox();
+					parent.document.getElementById("mainFrame").contentWindow.show11('addSubFlag',$('#sysMenu').attr('val'));
+				},
+				'updCMD': function(Item) {
+					//parent.document.getElementById("mainFrame").XYTipsWindow.removeBox();
+					parent.document.getElementById("mainFrame").contentWindow.show11('updFlag',$('#sysMenu').attr('val'));
+				},
+				'delCMD': function(Item) {
+					//parent.document.getElementById("mainFrame").XYTipsWindow.removeBox();
+					parent.document.getElementById("mainFrame").contentWindow.show11('delFlag',$('#sysMenu').attr('val'));
+				}
+			}
+		}
+		);
+	})
+</script>
+__NOUSEFLAGEND__
+</head>
+<body id="menubody"  style="background:#f0f9fd;">
+	<div class="lefttop"><span></span>制度</div>
+	<div id="menubox">
+	__MENUBODY__
+</div>
+</body>
+
+<div class="contextMenu" id="sysMenu" val="0">
+	<ul>
+		<li id="addSUBCMD"><img src="cssimg/new.png" /> 新建子项</li>
+		<li id="updCMD"><img src="cssimg/folder.png" /> 修改</li>
+		<hr />
+		<li id="delCMD"><img src="cssimg/cross.png" /> 删除</li>
+		<li id="exitCMD"><img src="cssimg/exit.png" /> 退出</li>
+	</ul>
+</div>
+</html>
